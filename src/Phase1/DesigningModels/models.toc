@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Task}{2}
+\contentsline {section}{\numberline {2}Relations transformations}{2}
+\contentsline {subsection}{\numberline {2.1}Repositories-Articles}{2}
+\contentsline {subsection}{\numberline {2.2}Articles-Articles}{3}
+\contentsline {subsection}{\numberline {2.3}Articles-Authors}{3}
+\contentsline {section}{\numberline {3}Writing relations forms}{4}

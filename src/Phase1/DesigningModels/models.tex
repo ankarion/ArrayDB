@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+% \usepackage[russian]{babel}
 \usepackage[OT1]{fontenc}
 \usepackage{color}
 \usepackage{amsmath}
@@ -8,7 +8,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[pdftex]{graphicx}
-\author{Быков А.Е.}
+\author{Bykov A.E.}
 \usepackage{tikz}
 %tikz library includes
 \usetikzlibrary[arrows]
@@ -107,5 +107,49 @@
 \newcommand{\code}[2]{
 \lstinputlisting[caption={#2},label=DescriptiveLabel,language=Java]{samples/#1}
 }
-\newtitle{}{}
+\newtitle{Phase 1.Creating scheme}{Innopolis University,\\ autumn semestsr course project\\ Bykov Anton}
+\section{Task}
+We are needed to transform scheme from technical task into relations
+\begin{figure}[h!]
+\includegraphics[scale=0.65791]{media/figure1.jpg}\\
+\caption{Structure from technical task}
+\end{figure}
+
+\section{Relations transformations}
+There are three many-to-many relations. So, we are needed to transform them all into many-to-one relations.
+\subsection{Repositories-Articles}
+A repository can contain many articles. So, many-to-many field transforms into a table Contains:\\
+\begin{figure}[h!]
+\includegraphics[scale=0.65791]{media/figure2.jpg}\\
+\caption{Structure from technical task}
+\end{figure}
+
+
+\subsection{Articles-Articles}
+This relation stands for referencing. In article's bibliography can be many articles. So, it transforms from Article-Article many-to-many relation into:
+\begin{enumerate}
+\item Article-References one-to-many
+\item Reference-Article many-to-one.
+\end{enumerate}
+\begin{figure}[h]
+\includegraphics[scale=0.65791]{media/figure3.jpg}\\
+\caption{Our structure with Bibliography}
+\end{figure}
+
+\subsection{Articles-Authors}
+There can be many authors of one article and each author may have many publ
+ication. So, we'll transform Articles-Authors relation into:
+\begin{enumerate}
+\item Article-AouthorList
+\item AuthorList
+\end{enumerate}
+\includegraphics[scale=0.585791]{media/figure4.jpg}
+
+\section{Writing relations forms}
+Repositories($\underline{id}$,url,name)\\
+Contain($\underline{id}$, repository\_id, article\_id)\\
+Articles($\underline{id}$,venue, year, name)\\
+Bibliography($\underline{id}$, article\_id, cited\_article\_id)\\
+AuthorList($\underline{id}$, article\_id, author\_id)\\
+Authors($\underline{id}$, name)
 \end{document}
