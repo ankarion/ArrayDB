@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {1}Technical task for the Phase 1}{2}
+\contentsline {subsection}{\numberline {1.1}Creating Scheme}{2}
+\contentsline {subsection}{\numberline {1.2}Implementing scheme}{3}
