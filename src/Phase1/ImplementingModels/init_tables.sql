@@ -1,6 +1,6 @@
 drop table AuthorLists;
 drop table Contain;
-drop table Bibligrophies;
+drop table Bibliographies;
 drop table Repositories;
 drop table Articles;
 drop table Authors;
@@ -23,7 +23,7 @@ create table Contain(
        	foreign key(repository_id) references Repositories(id),
 	foreign key(article_id) references Articles(id)
 );
-create table Bibligrophies(
+create table Bibliographies(
 	article_id integer,
 	reference_id integer,
 	foreign key (article_id) references Articles(id),

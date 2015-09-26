@@ -107,55 +107,5 @@
 \newcommand{\code}[2]{
 \lstinputlisting[caption={#2},label=DescriptiveLabel,language=Java]{samples/#1}
 }
-\newtitle{Technical Task}{Innopolis University,\\ autumn semestsr course project\\ Bykov Anton}
-\section{Technical task for the Phase 1}
-The objective of this phase is to utilize the database knowledge for real life problems.
-\begin{enumerate}
-\item Design the relational model and transform them into relations (create
-ER diagram and translate it into Relations).
-\item Design the relations in an existing database management system (DBMS) by creating physical tables and their relationships.
-\end{enumerate}
-\subsection{Creating Scheme}
-There are many repositories containing research articles with their information.
-\begin{figure}[h]
-\includegraphics[scale=0.7891]{media/phase1/figure1.jpg}\\
-\caption{The same article may be stored in different repositories.}
-\end{figure}
-
-The research articles are usually categorized based on their venues, authors, types and years.
-\begin{figure}[h!]
-\includegraphics[scale=0.5791]{media/phase1/figure2.jpg}\\
-\caption{The same article may be written by different authors.}
-\end{figure}
-
-A publication record reference in research articles can have several attributes along with the article name.\\
-\begin{figure}[h!]
-\includegraphics[scale=0.5791]{media/phase1/figure3.jpg}\\
-\caption{The same article may be referenced in different articles.}
-\end{figure}
-
-
-Functionality:
-\begin{itemize}
-\item Select, Insert, delete, and update publication records
-\item Import at least 1 million publications that are crawled from an existing publication repository, e.g. DBLP or Google Scholar, ACM digital
-library or etc. Realtime crawling is a +.
-\item Search the publication based on research area, author name, publi-
-cation year, venue(conference/journal name), title, keyword, type of
-paper, institution or related articles and obtained ordered results.
-\item Ability to query related articles, based on your own defined methods,
-\color{red}
-at least two methods.
-\color{black}
-\item Ability to sort papers based on your own defined ranking methods, \color{red}at least two methods\color{black}
-\end{itemize}
-\subsection{Implementing scheme}
-According to relations from 1.1, it is needed to implement a database on PostgreSQL
-\section{Technical task for the Phase 2}
-After creating the physical database, you need to develop a web-based graph-
-ical user interface (GUI) on top of it to interact with the database. It helps the users to carry out all the specified functionalities. It is more like Content Management System CMS. Only authorized/registered users are allowed to use this interface.
-
-The web interface must neatly report the results with ranking. A nice visualization of the results, like showing graphs for related articles, is a +.
-
-I've subdivided this task into 
+\newtitle{Plan}{}
 \end{document}

@@ -1,0 +1,20 @@
+{% if author_list %}
+    <ul>
+    {% for author in author_list %}
+      <li>{{ author.name }}</li>
+    {% endfor %}
+    {% if article_list %}
+      <ul>
+      {% for article in article_list %}
+        <li><a href="/articles/{{ article.id }}">{{ article.venue }},{{article.title}}, {{ article.year }}</a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No articles are available.</p>
+    {% endif %}
+    </ul>
+{% else %}
+    <p>No articles are available.</p>
+{% endif %}
+
+
