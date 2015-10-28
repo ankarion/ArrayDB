@@ -1,0 +1,8 @@
+*.pyc
+*.tex
+*.toc
+*.aux
+*.gz
+*.data
+*.xml
+*.zip
