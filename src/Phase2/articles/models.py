@@ -18,6 +18,9 @@ class Articles(Models):
         article.venue = data[1] or ''
         article.year = data[2] or ''
         article.title = data[3] or ''
+        article.authors = []
+        for i in data[3:]:
+            article.authors.append(i)
         return article
 
     def all(self):
@@ -25,7 +28,8 @@ class Articles(Models):
         return articles
 
     def get(self, id=None, venue=None, year=None, title=None, author=None, article=None):
-        sql = 'select * from %s where true ' % self.__tableName__
+        sql = '''select * from {table}
+        where true '''.format(table=self.__tableName__)
         if id:
             sql += 'and id = %s ' % str(id)
         if venue:
@@ -33,13 +37,13 @@ class Articles(Models):
         if year:
             sql += 'and year = %s ' % str(year)
         if title:
-            sql += 'and title = %s ' % str(title)
+            sql += 'and title =\'%s\' ' % str(title)
         if author:
             # TODO change aritcles.id to self.__tableName__
             sql += '''
                 and exists(
                     select * from authorlists as al
-                    where %s = al.author_id
+                    where '%s' = al.author_id
                     and  al.article_id = articles.id
                 )
             ''' % author
@@ -47,7 +51,7 @@ class Articles(Models):
             sql += '''
             and exists(
                 select * from bibliographies as b
-                where %s = b.reference_id
+                where '%s' = b.reference_id
                 and
                 b.article_id = articles.id
             )
@@ -60,3 +64,21 @@ class Articles(Models):
             article = self.__model__(data)
             articles.append(article)
         return articles
+
+    def save(self):
+        if self.id:
+            sql = '''
+            update articles set (id, venue, year, title)=({id}, {venue}, {year}, {title});
+            '''.format(id=self.id, venue=self.venue, year=self.year, title=self.title)
+        else:
+            sql = '''
+            insert into articles (venue,year,title) values ({venue}, {year}, {title});
+            '''
+            cur = Connection().getConnection().cursor()
+            cur.execute(sql)
+            article = Articles.get(venue=self.venue, year=self.year, title=self.title)
+            for author in self.authors():
+                sql = '''
+                insert into authorlists (author_id,article_id) values ({author_id}, {article_id});
+                '''.format(article_id=article.id, author_id=author)
+                cur.execute(sql)

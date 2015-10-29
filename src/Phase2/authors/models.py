@@ -7,12 +7,10 @@ class Authors(Models):
 
     def __init__(self):
         self.name = ''
-        self.id = 0
         super(Authors, self).__init__()
 
     def __model__(self, data):
         authors = Authors()
-        print data
         authors.id = data[0]
         authors.name = data[1] or ''
         return authors
@@ -26,13 +24,13 @@ class Authors(Models):
         if id:
             sql += 'and id = %s ' % str(id)
         if name:
-            sql += 'and name = %s ' % str(name)
+            sql += 'and name = \'%s\' ' % str(name)
         if article:
             # TODO change authors_id to self.__tableName__
             sql += '''
             and exists(
                 select * from authorlists as al
-                where %s = al.article_id
+                where\'%s\' = al.article_id
                 and al.author_id = authors.id
             )
             ''' % article
@@ -40,9 +38,22 @@ class Authors(Models):
         cur = cur.cursor()
         cur.execute(sql)
         authors = []
-        print sql
         for data in cur.fetchall():
             print data
             author = self.__model__(data)
             authors.append(author)
         return authors
+
+    def save(self):
+        if hasattr(self, 'id'):
+            sql = '''
+            update authors set (id,name)=({id}, '{name}')
+            where id = {id};
+            '''.format(name=self.name, id=self.id)
+        else:
+            sql = '''
+            insert into authors(name) values('{name}');
+            '''.format(name=self.name)
+        cur = Connection().getConnection().cursor()
+        print sql
+        cur.execute(sql)
