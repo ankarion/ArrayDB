@@ -27,7 +27,9 @@ class Articles(Models):
         articles = self.get()
         return articles
 
-    def get(self, id=None, venue=None, year=None, title=None, author=None, article=None):
+    def get(self, id=None, venue=None, year=None, title=None,
+            author=None, article=None,
+            limit=None, offset=None):
         sql = '''select * from {table}
         where true '''.format(table=self.__tableName__)
         if id:
@@ -56,6 +58,10 @@ class Articles(Models):
                 b.article_id = articles.id
             )
             ''' % article
+        if limit:
+            sql += 'limit %s' % limit
+        if offset:
+            sql += 'offset %s' % offset
         cur = Connection().getConnection()
         cur = cur.cursor()
         cur.execute(sql)
