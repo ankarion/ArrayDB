@@ -4,13 +4,25 @@ from django.template import RequestContext, loader
 from .models import Articles
 
 
-def index(request):
-    latest_articles_list = Articles().all()
+def index(request, page=0):
+    latest_articles_list = Articles().get(offset=page, limit=10)
     template = loader.get_template('articles/index.html')
     data = RequestContext(
         request,
         {
             'latest_articles_list': latest_articles_list,
+        }
+    )
+    return HttpResponse(template.render(data))
+
+
+def find(request, find, page=0):
+    filtered_articles_list = Articles().get(offset=page, limit=10, id=find.split()[0])
+    template = loader.get_template('articles/index.html')
+    data = RequestContext(
+        request,
+        {
+            'latest_articles_list': filtered_articles_list,
         }
     )
     return HttpResponse(template.render(data))
