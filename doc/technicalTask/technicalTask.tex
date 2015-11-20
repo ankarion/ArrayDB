@@ -152,10 +152,18 @@ at least two methods.
 \subsection{Implementing scheme}
 According to relations from 1.1, it is needed to implement a database on PostgreSQL
 \section{Technical task for the Phase 2}
-After creating the physical database, you need to develop a web-based graph-
-ical user interface (GUI) on top of it to interact with the database. It helps the users to carry out all the specified functionalities. It is more like Content Management System CMS. Only authorized/registered users are allowed to use this interface.
+After creating the physical database, you need to develop a web-based graphical user interface (GUI) on top of it to interact with the database. It helps the users to carry out all the specified functionalities. It is more like Content Management System CMS. Only authorized/registered users are allowed to use this interface.
 
 The web interface must neatly report the results with ranking. A nice visualization of the results, like showing graphs for related articles, is a +.
 
-I've subdivided this task into 
+\section{Technical task for the Phase 3}
+The goal of this phase is to replace the relational database with your own implementation of a database. You are asked to implement query operators (scan, select, project, join, group by, insert) using a standard programming language. You will replace all SQL code with calls to the query operators.
+Note that from the user’s point of view, nothing will change on the front end insert) side of your web application. These are the requirements of the third phase of the project:
+\begin{itemize}
+\item Your database must provide methods to query data, as well as insert new record and update existing records.
+\item Your database should provide methods to query data, as well as insert new record and update existing records.
+\item In particular, your database should at least answer queries that join two tables.
+\item Use the iterator model to implement query operators. That is, operators should pull tuples from underlying operators using next() calls.
+\item Indexing on Primary keys with ability to add index on other attributes.
+\end{itemize}
 \end{document}

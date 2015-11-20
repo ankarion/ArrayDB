@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.31)  13 NOV 2015 10:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.31)  13 NOV 2015 09:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**technicalTask.tex
-(./technicalTask.tex
+**Phase3.tex
+(./Phase3.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -844,8 +844,8 @@ File: pgflibraryshapes.symbols.code.tex 2009/10/27 v2.10 (rcs-revision 1.3)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarythrou
 gh.code.tex
 File: tikzlibrarythrough.code.tex 2008/02/03 v2.10 (rcs-revision 1.1)
-) (./technicalTask.aux)
-\openout1 = `technicalTask.aux'.
+) (./Phase3.aux)
+\openout1 = `Phase3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
@@ -927,90 +927,38 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+LaTeX Font Info:    Try loading font information for U+msa on input line 111.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+LaTeX Font Info:    Try loading font information for U+msb on input line 111.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./technicalTask.toc)
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Phase3.toc)
 \tf@toc=\write4
-\openout4 = `technicalTask.toc'.
+\openout4 = `Phase3.toc'.
 
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (8.082pt too wide) in paragraph at lines 116--117
-[]\OT1/cmr/m/n/12 Design the re-la-tions in an ex-ist-ing database man-age-ment
- sys-tem (DBMS)
- []
-
-<media/phase1/figure1.jpg, id=28, 423.5825pt x 140.525pt>
-File: media/phase1/figure1.jpg Graphic file (type jpg)
-
-<use media/phase1/figure1.jpg>
-Package pdftex.def Info: media/phase1/figure1.jpg used on input line 121.
-(pdftex.def)             Requested size: 334.24516pt x 110.88701pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-<media/phase1/figure2.jpg, id=29, 604.2575pt x 140.525pt>
-File: media/phase1/figure2.jpg Graphic file (type jpg)
-
-<use media/phase1/figure2.jpg>
-Package pdftex.def Info: media/phase1/figure2.jpg used on input line 127.
-(pdftex.def)             Requested size: 349.9256pt x 81.37804pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
-
- []
-
-<media/phase1/figure3.jpg, id=30, 604.2575pt x 166.6225pt>
-File: media/phase1/figure3.jpg Graphic file (type jpg)
-
-<use media/phase1/figure3.jpg>
-Package pdftex.def Info: media/phase1/figure3.jpg used on input line 133.
-(pdftex.def)             Requested size: 349.9256pt x 96.4911pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2 <./media/phase1/figure1.jpg> <./media/phase1/figure2.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 140.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 140.
- [3 <./media/phase1/figure3.jpg>] [4] (./technicalTask.aux) ) 
+ [2] (./Phase3.aux) ) 
 Here is how much of TeX's memory you used:
- 16556 strings out of 493304
- 344071 string characters out of 6139871
- 459611 words of memory out of 5000000
- 19569 multiletter control sequences out of 15000+600000
- 12403 words of font info for 48 fonts, out of 8000000 for 9000
+ 16495 strings out of 493304
+ 343013 string characters out of 6139871
+ 457632 words of memory out of 5000000
+ 19523 multiletter control sequences out of 15000+600000
+ 7442 words of font info for 29 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,8n,61p,426b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on technicalTask.pdf (4 pages, 84016 bytes).
+ 56i,6n,61p,419b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+>
+Output written on Phase3.pdf (2 pages, 31586 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 42 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 124 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
