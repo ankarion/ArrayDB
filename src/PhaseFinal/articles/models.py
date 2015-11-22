@@ -1,5 +1,7 @@
 from Entity.models import Models
 
+from authors.models import Authors
+
 
 class Articles(Models):
     __fields__ = ["id", "venue", "year", "title"]
@@ -10,48 +12,47 @@ class Articles(Models):
         return articles
 
     @classmethod
-    def get(cls, id=None, venue=None, year=None, title=None,
-            author=None, article=None,
-            limit=None, offset=None):
-        data = cls.__getData__()
-        articles = []
-        for i in range(len(data)/4):
-            article = cls()
-            article.__model__(data[4*i:])
-            articles.append(article)
-        sql = "true"
-        if id:
-            articles = filter(lambda x: True if x.id == id else False, articles)
-        if venue:
-            articles = filter(lambda x: True if x.venue == venue else False, articles)
-        if year:
-            articles = filter(lambda x: True if x.year == year else False, articles)
-        if title:
-            articles = filter(lambda x: True if x.title == title else False, articles)
-            sql += 'and title =\'%s\' ' % str(title)
-        if author:
-            # TODO change aritcles.id to self.__tableName__
-            sql += '''
-                and exists(
-                    select * from authorlists as al
-                    where '%s' = al.author_id
-                    and  al.article_id = articles.id
-                )
-            ''' % author
-        if article:
-            sql += '''
-            and exists(
-                select * from bibliographies as b
-                where '%s' = b.reference_id
-                and
-                b.article_id = articles.id
+    def get(cls, author_id=None, article_id=None,
+            limit=None, offset=None,
+            **kwargs):
+        articles = cls.__get__(**kwargs)
+        if author_id:
+            authors_articles = AuthorLists.get(id=author_id)
+            articles = articles.filter(
+                lambda x: x.id in authors_articles,
+                articles
             )
-            ''' % article
-        if limit:
-            sql += 'limit %s' % limit
+        if article_id:
+            references = References.get(id=article_id)
+            articles = filter(
+                lambda x: x.id in references,
+                articles
+            )
         if offset:
-            sql += 'offset %s' % offset
+            articles = articles[offset:]
+        if limit:
+            articles = articles[:limit]
         return articles
 
-    def save(self):
+    def save(self, **kwargs):
+        print kwargs
         self.__save__()
+
+    def authors(self, **kwargs):
+        return Authors.get(article=self.id, **kwargs)
+
+
+class AuthorLists(Models):
+    __fields__ = ["article_id", "author_id"]
+
+    @classmethod
+    def get(cls, **kwargs):
+        return cls.__get__(**kwargs)
+
+
+class References(Models):
+    __fields__ = ["article_id", "reference_id"]
+
+    @classmethod
+    def get(cls, **kwargs):
+        return cls.__get__(**kwargs)

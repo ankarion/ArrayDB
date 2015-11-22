@@ -6,6 +6,8 @@ class Models(object):
     __page__ = 0
 
     def __model__(self, data):
+        # inserts data into the model
+        # data - a list of data
         i = 0
         for field in self.__fields__:
             if i < len(data):
@@ -16,6 +18,7 @@ class Models(object):
 
     @classmethod
     def __getData__(cls):
+        # gets the data from file in list
         # TODO storage name should be defined in conf file
         storage = FileHandler("data")
         dataIterator = storage.read_page()
@@ -23,13 +26,37 @@ class Models(object):
 
         data = dataIterator.next()
         i = 0
-        while (data[i] != cls.__name__):
+        while ((i < len(data)) and (data[i] != cls.__name__)):
             i += 2
+        if i >= len(data):
+            print ("\n ERROR:table \""
+                   "%s \" was not declared in this scope\n"
+                   % cls.__name__)
+            return
         cls.__page__ = int(data[i+1])
         data = storage.read_page(int(data[i+1])).next()
         return data
 
+    @classmethod
+    def __get__(cls, **kwargs):
+        # returns filtered data as a list of instances
+        data = cls.__getData__()
+        instances = []
+        for i in range(len(data)/len(cls.__fields__)):
+            instance = cls()
+            instance.__model__(data[len(cls.__fields__)*i:])
+            instances.append(instance)
+        for key in kwargs.keys():
+            instances = filter(
+                lambda x: x.__getattribute__(key) == kwargs[key],
+                instances
+            )
+        return instances
+
     def __save__(self):
+        # inserts an instance into file
+        # or updates existing tuple if instance's id is specified
+        # and it exists in file
         storage = FileHandler("data")
         data = self.__getData__()
         instances = []

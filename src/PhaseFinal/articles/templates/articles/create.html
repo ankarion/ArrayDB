@@ -1,0 +1,10 @@
+<form action="{% url 'articles:save' %}" method="post">
+  {% csrf_token %}
+    <input type="text" name="title" id="title"/>
+    <label for="text">name</label><br />
+    <input type="text" name="venue" id="venue"/>
+    <label for="name">venue</label><br />
+    <input type="text" name="year" id="year"/>
+    <label for="year">year</label><br />
+  <input type="submit" value="Save" />
+</form>

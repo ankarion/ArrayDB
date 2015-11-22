@@ -1,0 +1,54 @@
+
+Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+Available subcommands:
+
+[auth]
+    changepassword
+    createsuperuser
+
+[django]
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    runfcgi
+    shell
+    showmigrations
+    sql
+    sqlall
+    sqlclear
+    sqlcustom
+    sqldropindexes
+    sqlflush
+    sqlindexes
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    syncdb
+    test
+    testserver
+    validate
+
+[sessions]
+    clearsessions
+
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver
+[22/Nov/2015 11:20:26] "GET /articles/ HTTP/1.1" 200 280
+[22/Nov/2015 11:20:26] "GET /favicon.ico HTTP/1.1" 404 2155
+Error: That port is already in use.
+[22/Nov/2015 11:21:16] "GET /articles/ HTTP/1.1" 200 280
+[22/Nov/2015 11:21:19] "GET /articles/1 HTTP/1.1" 200 141
