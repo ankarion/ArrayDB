@@ -9,6 +9,21 @@
     <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
+    <script>
+        $(document).ready(function() {
+            $("#send-notification-button").popover({
+                container: "body",
+                html: true,
+                placement: "right",
+                content: function() {
+		    alert("!");
+                    return $("#send-notification-popover").html();
+                },
+                trigger: "click"
+            });
+        });
+    </script>
+
     <title>Articles</title>
 </head>
 <body>

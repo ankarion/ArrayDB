@@ -6,3 +6,4 @@
 *.data
 *.xml
 *.zip
+src/PhaseFinal/static/ext*
