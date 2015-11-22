@@ -79,8 +79,8 @@ def editWindow(request):
 def save(request, **kwargs):
     post = request.POST
     article = Articles()
-    article.title = post['title']
-    article.venue = post['venue']
-    article.year = post['year']
+    article.title = post.get("title","")
+    article.venue = post.get('venue',"")
+    article.year = post.get('year',"")
     article.save()
-    print article.id
+    return index(request)
