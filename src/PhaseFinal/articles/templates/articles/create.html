@@ -1,10 +1,93 @@
-<form action="{% url 'articles:save' %}" method="post">
-  {% csrf_token %}
-    <input type="text" name="title" id="title"/>
-    <label for="title">title</label><br />
-    <input type="text" name="venue" id="venue"/>
-    <label for="venue">venue</label><br />
-    <input type="text" name="year" id="year"/>
-    <label for="year">year</label><br />
-  <input type="submit" value="Save" />
-</form>
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+
+    <title>Articles</title>
+</head>
+<body>
+<center>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div id="find-popover" class="hide">
+                            <form action="{% url 'articles:save' %}" method="post">
+  				{% csrf_token %}
+				<table>
+				    <tr>
+                                        <th>title</th>
+                                        {% if article %}
+                                        <td><input type="text" name="title" id="title" value="{{ article.title }}" /></td>
+                                        {% else %}
+                                        <td><input type="text" name="title" id="title"/></td>
+                                        {% endif %}
+
+                                    </tr>
+                                    <tr>
+                                        <th>venue</th>
+                                        {% if article %}
+                                        <td><input type="text" name="venue" id="venue" value = "{{article.venue}}" /></td>
+                                        {% else %}
+                                        <td><input type="text" name="venue" id="venue"/></td>
+                                        {% endif %}
+
+                                    </tr>
+                                    <tr>
+                                        <th>year</th>
+                                        {% if article %}
+                                        <td><input type="text" name="year" id="year" value = {{article.year}} /></td>
+                                        {% else %}
+                                        <td><input type="text" name="year" id="year"/></td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if article %}
+                                        <th></th>
+
+                                        {% if article.authors %}
+                                        <td><table>
+                                            <tr>
+                                            <th>
+                                            Authors:
+                                            </th>
+                                            </tr>
+                                            {% for author in article.authors %}
+                                            <tr>
+                                            <td><input type="text" name="authors" id="authors" value = {{author.name}} /></td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table></td>
+                                        {% endif %}
+                                        {% else %}
+                                        <th>authors</th>
+
+                                        <td><input type="text" name="authors" id="authors"/></td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                        <input type="submit" value="Save" />
+                                    </td>
+                                    </tr>
+                                </table>
+		    	    </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</center>
+</body>
+</html>
+
+

@@ -28,7 +28,7 @@ class FileHandler(object):
                                 int(metaData[2*i]):
                             ][
                                 :int(metaData[2*i+1])
-                            ]
+                            ].replace("\s"," ")
                         )
                     yield res
 
@@ -37,7 +37,7 @@ class FileHandler(object):
         pos = 0
         for i in range(0, len(data)):
             metaData.append(pos)
-            data[i] = str(data[i])
+            data[i] = str(data[i]).replace(" ","\s")
             metaData.append(len(data[i]))
             pos += len(data[i])
         data = ''.join(data)

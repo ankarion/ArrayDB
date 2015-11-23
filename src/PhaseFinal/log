@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 338, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 312, in execute
+    django.setup()
+  File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models(all_models)
+  File "/usr/local/lib/python2.7/dist-packages/django/apps/config.py", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/anthony/Documents/homework/dmd/CourseProject/DMDCourseProject/src/PhaseFinal/articles/models.py", line 3, in <module>
+    from authors.models import Authors
+  File "/home/anthony/Documents/homework/dmd/CourseProject/DMDCourseProject/src/PhaseFinal/authors/models.py", line 17
+    authors
+    ^
+IndentationError: unexpected indent
+System check identified some issues:
+
+WARNINGS:
+?: (1_8.W001) The standalone TEMPLATE_* settings were deprecated in Django 1.8 and the TEMPLATES dictionary takes precedence. You must put the values of the following settings into your default TEMPLATES dict: TEMPLATE_DIRS.
+
+System check identified 1 issue (0 silenced).
+[23/Nov/2015 12:53:51] "GET /favicon.ico HTTP/1.1" 500 56574
+[23/Nov/2015 12:53:55] "GET / HTTP/1.1" 200 2228
+[23/Nov/2015 12:53:55] "GET /favicon.ico HTTP/1.1" 500 56574
+System check identified some issues:
+
+WARNINGS:
+?: (1_8.W001) The standalone TEMPLATE_* settings were deprecated in Django 1.8 and the TEMPLATES dictionary takes precedence. You must put the values of the following settings into your default TEMPLATES dict: TEMPLATE_DIRS.
+
+System check identified 1 issue (0 silenced).
+[23/Nov/2015 13:01:22] "GET / HTTP/1.1" 200 2228
+[23/Nov/2015 13:01:22] "GET /favicon.ico HTTP/1.1" 500 56574
+[23/Nov/2015 13:01:34] "GET /articles/1 HTTP/1.1" 200 1267
+[23/Nov/2015 13:01:34] "GET /favicon.ico HTTP/1.1" 500 56594
+[23/Nov/2015 13:01:39] "GET /favicon.ico HTTP/1.1" 500 56574
+[23/Nov/2015 13:01:59] "POST /create HTTP/1.1" 200 2331
+[23/Nov/2015 13:01:59] "GET /favicon.ico HTTP/1.1" 500 56586
+[23/Nov/2015 13:02:38] "POST /save HTTP/1.1" 200 2327
+[23/Nov/2015 13:02:38] "GET /favicon.ico HTTP/1.1" 500 56582
+[23/Nov/2015 13:02:41] "GET /articles/3 HTTP/1.1" 200 2321
+[23/Nov/2015 13:02:41] "GET /favicon.ico HTTP/1.1" 500 56594
+[23/Nov/2015 13:02:54] "GET /articles/3/update/ HTTP/1.1" 200 3774
+[23/Nov/2015 13:02:54] "GET /favicon.ico HTTP/1.1" 500 56610
+[23/Nov/2015 13:03:14] "POST /save HTTP/1.1" 200 2426
+[23/Nov/2015 13:03:14] "GET /favicon.ico HTTP/1.1" 500 56582
+[23/Nov/2015 13:03:17] "GET /articles/4 HTTP/1.1" 200 2514
+[23/Nov/2015 13:03:17] "GET /favicon.ico HTTP/1.1" 500 56594
+[23/Nov/2015 13:03:20] "GET /favicon.ico HTTP/1.1" 500 56582
+[23/Nov/2015 13:03:23] "GET /articles/3 HTTP/1.1" 200 2514
+[23/Nov/2015 13:03:23] "GET /favicon.ico HTTP/1.1" 500 56594
+[23/Nov/2015 13:03:25] "GET /favicon.ico HTTP/1.1" 500 56582
+[23/Nov/2015 13:05:14] "GET /save HTTP/1.1" 200 2522
+[23/Nov/2015 13:05:15] "GET /favicon.ico HTTP/1.1" 500 56582

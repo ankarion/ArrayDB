@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.template import RequestContext, loader
-from django.contrib.auth.decorators import login_required
 
 from .models import Articles
+from authors.models import Authors
+from .models import AuthorLists
 
 
 def index(request, page=0):
@@ -16,11 +17,12 @@ def index(request, page=0):
         )
         articleList.sort()
         if (articleList) and (page*10 < len(articleList)):
-            articleList[page*10:][:10]
+            articleList = articleList[page*10:][:10]
     else:
-        articleList = Articles.get(offset=page, limit=10)
+        articleList = Articles.get()
         articleList.sort()
-        print [x.id for x in articleList]
+        if (articleList) and (page*10 < len(articleList)):
+            articleList = articleList[page*10:][:10]
     template = loader.get_template('articles/index.html')
     data = RequestContext(
         request,
@@ -45,12 +47,11 @@ def read(request, article_id):
     return HttpResponse(template.render(data))
 
 
-@login_required
 def update(request, article_id):
-    article = Articles.get(id=id)
+    article = Articles.get(id=article_id)
     if article:
         article = article[0]
-        template = loader.get_template('articles/detail.html')
+        template = loader.get_template('articles/create.html')
         data = RequestContext(
             request,
             {
@@ -75,4 +76,23 @@ def save(request, **kwargs):
     article.venue = post.get('venue', "")
     article.year = post.get('year', "")
     article.save()
+    authors = post.get('authors', "")
+    if authors:
+        newAuthorList = []
+        authors = authors.replace('\t', ', ')
+        authors = authors.replace('\n', ', ')
+        authors = authors.replace(';', ', ')
+        newAuthorList.extend(authors.split(', '))
+        for author in newAuthorList:
+            DBAuthor = Authors.get(name=author)
+            if not DBAuthor:
+                DBAuthor = Authors()
+                DBAuthor.name = author
+                DBAuthor.save()
+                print DBAuthor.id
+
+            if DBAuthor:
+                connect = AuthorLists()
+                connect.article_id = article.id
+                connect.author_id = DBAuthor.id
     return index(request)

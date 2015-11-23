@@ -1,18 +1,90 @@
-{% if article_list %}
-    <ul>
-    {% for article in article_list %}
-      <li><a href="/articles/{{ article.id }}">{{ article.venue }},{{article.title}}, {{ article.year }}</a></li>
-    {% endfor %}
-    </ul>
-    {% if reference_list %}
-      <ul>
-      {% for article in reference_list %}
-        <li><a href="/articles/{{ article.id }}">{{ article.venue }},{{article.title}}, {{ article.year }}</a></li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      <p>No references are available.</p>
-    {% endif %}
-{% else %}
-    <p>No articles are available.</p>
-{% endif %}
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+
+    <title>Articles</title>
+</head>
+<body>
+
+<center>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div id="find-popover" class="hide">
+                        {% if article_list %}
+                        {% for article in article_list %}
+                        <table>
+                          <tr>
+                          <th> Venue: </th>
+                          <td>{{ article.venue }}</td>
+                          </tr>
+                          <tr>
+                          <th>Title:</th>
+                          <td>{{article.title}}</td>
+                          </tr>
+                          <tr>
+                          <th>year</th>
+                          <td>{{ article.year }}</td>
+                          </tr>
+                        </table>
+                        {% if article.authors %}
+                        <td><table>
+                            <tr>
+                            <th>
+                            Authors:
+                            </th>
+                            </tr>
+                            {% for author in article.authors %}
+                            <tr>
+                            <td><input type="text" name="authors" id="authors" value = {{author.name}} /></td>
+                            </tr>
+                            {% endfor %}
+                        </table></td>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+            {% if reference_list %}
+            <h1> References:</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Venue</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <ul>
+                        {% for article in reference_list %}
+                        <tr>
+                        <td>{{ article.venue }}</td>
+                        <td>{{article.title}}</td>
+                        <td>{{ article.year }}</td>
+                        </tr>
+                        {% endfor %}
+                    </ul>
+
+                </tbody>
+            </table>
+            {% endif %}
+
+
+        </div>
+    </div>
+</center>
+</body>
+</html>

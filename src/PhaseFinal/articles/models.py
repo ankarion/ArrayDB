@@ -17,8 +17,8 @@ class Articles(Models):
             **kwargs):
         articles = cls.__get__(**kwargs)
         if author_id:
-            authors_articles = AuthorLists.get(id=author_id)
-            articles = articles.filter(
+            authors_articles = AuthorLists.get(author_id=author_id)
+            articles = filter(
                 lambda x: x.id in authors_articles,
                 articles
             )

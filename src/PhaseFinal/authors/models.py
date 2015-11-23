@@ -10,7 +10,6 @@ class Authors(Models):
 
     @classmethod
     def get(cls, article=None, **kwargs):
-        sql = ""
         if article:
             pass
         authors = cls.__get__(**kwargs)
